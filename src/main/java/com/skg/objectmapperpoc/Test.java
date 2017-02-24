@@ -21,8 +21,8 @@ public class Test {
         final String createKeySpaceCql = "CREATE KEYSPACE IF NOT EXISTS " + keyspaceName + " with replication = {'class':'SimpleStrategy', 'replication_factor':3};";
         client.getSession().execute(createKeySpaceCql);
 
-        /*final String creteTableCql = "CREATE TABLE " + keyspaceName + ".users (id uuid primary key, name varchar)";
-        client.getSession().execute(creteTableCql);*/
+        final String creteTableCql = "CREATE TABLE IF NOT EXISTS " + keyspaceName + ".users (id uuid primary key, name varchar)";
+        client.getSession().execute(creteTableCql);
 
         MappingManager manager = new MappingManager(client.getSession());
         Mapper<User> mapper = manager.mapper(User.class);
